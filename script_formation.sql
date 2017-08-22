@@ -11,7 +11,7 @@ PRIMARY KEY ( idClient )
 create table IF NOT EXISTS commande (
 idCommande integer NOT NULL AUTO_INCREMENT,
 idClient integer NOT NULL,
-FOREIGN KEY (idClient) REFERENCES client (idClient),
+constraint fk_commande_idclient FOREIGN KEY (idClient) REFERENCES client (idClient),
 date1 date NOT NULL,
 total double NOT NULL, 
 PRIMARY KEY ( idCommande)
@@ -26,9 +26,9 @@ PRIMARY KEY ( idPlat )
 
 create table IF NOT EXISTS commande_plat (
 idCommande integer NOT NULL,
-FOREIGN KEY (idCommande) REFERENCES commande (idCommande),
+constraint fk_cmdplat_idCommande FOREIGN KEY (idCommande) REFERENCES commande (idCommande),
 idplat integer NOT NULL,
-FOREIGN KEY (idplat) REFERENCES plat (idPlat),
+constraint fk_cmdplat_idplat FOREIGN KEY (idplat) REFERENCES plat (idPlat),
 quantite integer NOT NULL
 );
 
@@ -40,9 +40,9 @@ PRIMARY KEY ( idIngredient)
 
 create table IF NOT EXISTS ingredient_plat (
 idPlat integer NOT NULL,
-FOREIGN KEY (idPlat) REFERENCES plat (idPlat),
+constraint fk_ingre_plat_idplat FOREIGN KEY (idPlat) REFERENCES plat (idPlat),
 idIngredient integer NOT NULL,
-FOREIGN KEY (idIngredient) REFERENCES ingredient (idIngredient),
+constraint fk_ingre_plat_idIngredient FOREIGN KEY (idIngredient) REFERENCES ingredient (idIngredient),
 quantite integer NOT NULL
 );
 
